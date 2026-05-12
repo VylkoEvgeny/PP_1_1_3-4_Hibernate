@@ -1,5 +1,6 @@
 package jm.task.core.jdbc.util;
 
+import jm.task.core.jdbc.model.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -28,6 +29,7 @@ public class Util {
             conf.setProperty("hibernate.connection.username", "root");
             conf.setProperty("hibernate.connection.password", "6374985");
             conf.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
+            conf.addAnnotatedClass(User.class);
             sessionFactory = conf.buildSessionFactory();
         }
         return sessionFactory;
