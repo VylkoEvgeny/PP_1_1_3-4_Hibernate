@@ -10,18 +10,8 @@ import java.sql.SQLException;
 
 public class Util {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/userdb";
-    private static final String USER = "root";
-    private static final String PASSWORD = "6374985";
-    public static Connection getConnection() {
-        try {
-            return DriverManager.getConnection(URL,USER,PASSWORD);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     private static SessionFactory sessionFactory;
+
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             Configuration conf = new Configuration();

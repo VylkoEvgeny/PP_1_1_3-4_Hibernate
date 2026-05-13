@@ -11,11 +11,8 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
-    //Либо оставить такой конструктор, либо конструктор, который принимает объект типа UserDao
     public UserServiceImpl() {
-        /* Для JDBC
-        this.userDao = new UserDaoJDBCImpl();
-         */
+
         SessionFactory sessionFactory = Util.getSessionFactory();
         this.userDao = new UserDaoHibernateImpl(sessionFactory);
     }
