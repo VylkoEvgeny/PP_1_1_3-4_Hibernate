@@ -1,8 +1,10 @@
 package jm.task.core.jdbc.service;
 
 import jm.task.core.jdbc.dao.UserDao;
-import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.model.User;
+import jm.task.core.jdbc.util.Util;
+import org.hibernate.SessionFactory;
 
 import java.util.List;
 
@@ -11,7 +13,11 @@ public class UserServiceImpl implements UserService {
 
     //Либо оставить такой конструктор, либо конструктор, который принимает объект типа UserDao
     public UserServiceImpl() {
+        /* Для JDBC
         this.userDao = new UserDaoJDBCImpl();
+         */
+        SessionFactory sessionFactory = Util.getSessionFactory();
+        this.userDao = new UserDaoHibernateImpl(sessionFactory);
     }
 
     public void createUsersTable() {
